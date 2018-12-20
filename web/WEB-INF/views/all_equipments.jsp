@@ -36,7 +36,7 @@
                 <button type="submit">Найти по описанию</button>
             </form>
             <div class="well">
-                <a href="<c:url value='/new_computer' />">Добавить новый компьютер</a>
+                <a href="<c:url value='computer/add' />">Добавить новый компьютер</a>
             </div>
             <table border="1">
                 <tr>
