@@ -12,7 +12,7 @@
     var RestGetIp = function (ip) {
         $.ajax({
             type: 'GET',
-            url: service + '/computer/get/ip/' + ip,
+            url: service + '/equipment/get/ip/' + ip,
             dataType: 'json',
             async: false,
             success: function (result) {
@@ -30,13 +30,13 @@
 <div id="mainContainer">
     <div id="mainRow">
         <section id="main">
-            <h1>Список всех компьютеров</h1>
+            <h1>Список всех устройств</h1>
             <form method="post" action="filter">
                 <input type="text" name="ip">
                 <button type="submit">Найти по описанию</button>
             </form>
             <div class="well">
-                <a href="<c:url value='/computer/add' />">Добавить новый компьютер</a>
+                <a href="<c:url value='computer/add' />">Добавить новый компьютер</a>
             </div>
             <table border="1">
                 <tr>

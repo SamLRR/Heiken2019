@@ -30,12 +30,12 @@ public class AppController {
         return "adminPage";
     }
 
-    @RequestMapping("/all_computers")
-    public String getAllComputers(Model model) {
-        model.addAttribute("computer", computerService.getAllComputers());
-
-        return "all_computers";
-    }
+//    @RequestMapping("/all_computers")
+//    public String getAllComputers(Model model) {
+//        model.addAttribute("computer", computerService.getAllComputers());
+//
+//        return "all_computers";
+//    }
 
     @RequestMapping(value = {"/edit-computer-{id}"}, method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     public String editComputer(@PathVariable String id, ModelMap model) {
@@ -62,36 +62,36 @@ public class AppController {
         return "registrationSuccess";
     }
 
-    @PostMapping("filter")
-    public String getComputerByIp(@RequestParam String ip, ModelMap model) {
-        List<Computer> computers;
+//    @PostMapping("filter")
+//    public String getComputerByIp(@RequestParam String ip, ModelMap model) {
+//        List<Computer> computers;
+//
+//        if (ip != null && !ip.isEmpty()) {
+//            computers = computerService.getComputerByIp(ip);
+//        } else {
+//            computers = computerService.getAllComputers();
+//        }
+//        model.addAttribute("computers", computers);
+//        return "filter";
+//    }
 
-        if (ip != null && !ip.isEmpty()) {
-            computers = computerService.getComputerByIp(ip);
-        } else {
-            computers = computerService.getAllComputers();
-        }
-        model.addAttribute("computers", computers);
-        return "filter";
-    }
-
-    @RequestMapping(value = "/new_computer", method = RequestMethod.GET)
-    public String newComputer(ModelMap model){
-        Computer computer = new Computer();
-        model.addAttribute("computer", computer);
-        model.addAttribute("edit", false);
-        return "registration";
-    }
-
-    @RequestMapping(value = { "/new_computer" }, method = RequestMethod.POST)
-    public String saveUser(@Valid Computer computer, BindingResult result,
-                           ModelMap model) {
-        if (result.hasErrors()) {
-            return "registration";
-        }
-        computerService.addComputer(computer);
-
-        model.addAttribute("success", "Computer " + computer.getArmName() + " registered successfully");
-        return "registrationSuccess";
-    }
+//    @RequestMapping(value = "/new_computer", method = RequestMethod.GET)
+//    public String newComputer(ModelMap model){
+//        Computer computer = new Computer();
+//        model.addAttribute("computer", computer);
+//        model.addAttribute("edit", false);
+//        return "registration";
+//    }
+//
+//    @RequestMapping(value = { "/new_computer" }, method = RequestMethod.POST)
+//    public String saveUser(@Valid Computer computer, BindingResult result,
+//                           ModelMap model) {
+//        if (result.hasErrors()) {
+//            return "registration";
+//        }
+//        computerService.addComputer(computer);
+//
+//        model.addAttribute("success", "Computer " + computer.getArmName() + " registered successfully");
+//        return "registrationSuccess";
+//    }
 }

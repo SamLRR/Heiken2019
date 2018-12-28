@@ -8,7 +8,7 @@ public interface ComputerService {
 
     Computer addComputer(Computer computer);
 
-    Computer getComputerById(Long ip);
+    Computer getComputerById(Long id);
 
     List<Computer> getAllComputers();
 

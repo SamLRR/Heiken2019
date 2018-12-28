@@ -102,7 +102,7 @@
         </td>
         <td>/computer/get/all</td>
         <td>
-            <div class="header__item headerButton"><a href="/all_computers">All computers</a></div>
+            <div class="header__item headerButton"><a href="computer/all_computers">All computers</a></div>
         </td>
     </tr>
 
