@@ -22,12 +22,6 @@ public class ComputerController {
         this.computerService = computerService;
     }
 
-//    @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
-//    @ResponseBody
-//    public Computer addComputer(@RequestBody Computer computer) {
-//        return computerService.addComputer(computer);
-//    }
-
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     @ResponseBody
     public Computer getComputerById(@PathVariable(value = "id") String id) {
@@ -77,6 +71,31 @@ public class ComputerController {
         computerService.addComputer(computer);
 
         model.addAttribute("success", "Computer " + computer.getArmName() + " registered successfully");
+        return "registrationSuccess";
+    }
+
+    @RequestMapping(value = {"/edit-computer-{id}"}, method = RequestMethod.GET, produces = "application/json;charset=utf-8")
+    public String editComputer(@PathVariable String id, ModelMap model) {
+        Computer computer = computerService.getComputerById(Long.parseLong(id));
+        model.addAttribute("computer", computer);
+        model.addAttribute("edit", true);
+        return "registration";
+    }
+
+    /**
+     * This method will be called on form submission, handling POST request for
+     * updating computer in database. It also validates the computer input
+     */
+    @RequestMapping(value = {"/edit-computer-{id}"}, method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+    public String updateComputer(@Valid Computer computer, BindingResult result, ModelMap model) {
+
+        if (result.hasErrors()) {
+            return "registration";
+        }
+
+        computerService.updateComputer(computer);
+
+        model.addAttribute("success", "Computer " + computer.getArmName() + " updated successfully");
         return "registrationSuccess";
     }
 

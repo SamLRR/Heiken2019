@@ -49,16 +49,16 @@
                     <th>Описание пользователя</th>
                     <th>Диапазон IP</th>
                 </tr>
-                <c:forEach items="${computer}" var="c">
+                <c:forEach items="${computer}" var="e">
                     <tr>
-                        <td><a href=<c:url value='/edit-computer-${c.id}'/>>${c.id}</a></td>
-                        <td>${c.code}</td>
-                        <td>${c.name}</td>
-                        <td>${c.description}</td>
-                        <td>${c.domainName}</td>
-                        <td>${c.phone}</td>
-                        <td>${c.userDescription}</td>
-                        <td>${c.diap_ip}</td>
+                        <td><a href=<c:url value='/edit-computer-${e.id}'/>>${e.id}</a></td>
+                        <td>${e.code}</td>
+                        <td>${e.name}</td>
+                        <td>${e.description}</td>
+                        <td>${e.domainName}</td>
+                        <td>${e.phone}</td>
+                        <td>${e.userDescription}</td>
+                        <td>${e.diap_ip}</td>
                     </tr>
                 </c:forEach>
             </table>

@@ -63,15 +63,4 @@ public class AppConfig {
     public EquipmentDao equipmentDao(){
         return new EquipmentDaoImpl(Equipment.class);
     }
-
-    @Bean
-    public ComputerService computerService(){
-        return new ComputerServiceImpl();
-    }
-
-    @Bean
-    public EquipmentService equipmentService(){
-        return new EquipmentServiceImpl();
-    }
-
 }

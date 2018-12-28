@@ -6,8 +6,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Registration Confirmation Page</title>
-	<link href="<c:url value='css/bootstrap.css' />" rel="stylesheet"></link>
-	<link href="<c:url value='css/app.css' />" rel="stylesheet"></link>
+	<link href="<c:url value='/css/bootstrap.css' />" rel="stylesheet"></link>
+	<link href="<c:url value='/css/app.css' />" rel="stylesheet"></link>
 </head>
 <body>
 <div class="generic-container">

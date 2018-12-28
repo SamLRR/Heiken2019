@@ -7,9 +7,27 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>User Registration Form</title>
-	<link href="<c:url value='css/bootstrap.css' />" rel="stylesheet"/>
-	<link href="<c:url value='css/app.css' />" rel="stylesheet"/>
+	<link href="<c:url value='/css/app.css' />" rel="stylesheet"/>
+	<link href="<c:url value='/css/bootstrap.css' />" rel="stylesheet"/>
 </head>
+
+<script>
+    var service = 'http://localhost:8080/equipment';
+    var GetAll = function (id) {
+        $.ajax({
+            type: 'GET',
+            url: service + '/get/all_equipments/'+id,
+            dataType: 'json',
+            async: false,
+            success: function (result) {
+                $('#response').html(JSON.stringify(result))
+            },
+            error: function (jqXHR, testStatus, errorThrown) {
+                $('#response').html(JSON.stringify(jqXHR))
+            }
+        });
+    };
+</script>
 
 <body>
 
@@ -134,6 +152,24 @@
 			<%--</div>--%>
 		<%--</div>--%>
 
+
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Тип</th>
+                <th>Модель</th>
+                <th>Серийный номер</th>
+                <th>Описание</th>
+            </tr>
+            <c:forEach items="${equipments}" var="e">
+            <tr>
+                <td><a href=<c:url value='/equipment/get/all_equipments/${e.id}'/>>${e.id}</a></td>
+                <td>${e.type}</td>
+                <td>${e.model}</td>
+                <td>${e.serialNumber}</td>
+                <td>${e.description}</td>
+            </tr>
+            </c:forEach>
 		<div class="row">
 			<div class="form-actions floatRight">
 				<c:choose>

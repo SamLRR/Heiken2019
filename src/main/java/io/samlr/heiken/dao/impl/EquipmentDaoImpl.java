@@ -45,4 +45,19 @@ public class EquipmentDaoImpl extends BasicDaoImpl<Equipment> implements Equipme
         Query<Equipment> typedQuery = session.createQuery(criteriaQuery);
         return typedQuery.getResultList();
     }
+
+    @Override
+    public List<Equipment> getAllEquipmentsOfComputer(Long id) {
+        Session session = sessionFactory.getCurrentSession();
+
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Equipment> criteriaQuery = builder.createQuery(Equipment.class);
+        Root<Equipment> root = criteriaQuery.from(Equipment.class);
+
+        criteriaQuery.select(root);
+        criteriaQuery.where(builder.equal(root.get("computer"), id));
+
+        Query<Equipment> typedQuery = session.createQuery(criteriaQuery);
+        return typedQuery.getResultList();
+    }
 }
