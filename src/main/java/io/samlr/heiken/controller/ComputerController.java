@@ -1,7 +1,9 @@
 package io.samlr.heiken.controller;
 
 import io.samlr.heiken.entity.Computer;
+import io.samlr.heiken.entity.Equipment;
 import io.samlr.heiken.service.ComputerService;
+import io.samlr.heiken.service.EquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +18,12 @@ import java.util.List;
 @RequestMapping(value = "/computer")
 public class ComputerController {
     private final ComputerService computerService;
+    private final EquipmentService equipmentService;
 
     @Autowired
-    public ComputerController(ComputerService computerService) {
+    public ComputerController(ComputerService computerService, EquipmentService equipmentService) {
         this.computerService = computerService;
+        this.equipmentService = equipmentService;
     }
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
@@ -77,7 +81,9 @@ public class ComputerController {
     @RequestMapping(value = {"/edit-computer-{id}"}, method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     public String editComputer(@PathVariable String id, ModelMap model) {
         Computer computer = computerService.getComputerById(Long.parseLong(id));
+        List<Equipment> equipments = equipmentService.getAllEquipmentsByComputerId(computer.getId());
         model.addAttribute("computer", computer);
+        model.addAttribute("equipments", equipments);
         model.addAttribute("edit", true);
         return "registration";
     }
