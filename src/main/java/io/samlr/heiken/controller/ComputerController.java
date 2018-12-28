@@ -63,14 +63,14 @@ public class ComputerController {
         Computer computer = new Computer();
         model.addAttribute("computer", computer);
         model.addAttribute("edit", false);
-        return "registration";
+        return "registrationComputer";
     }
 
     @RequestMapping(value = { "/add" }, method = RequestMethod.POST)
     public String saveUser(@Valid Computer computer, BindingResult result,
                            ModelMap model) {
         if (result.hasErrors()) {
-            return "registration";
+            return "registrationComputer";
         }
         computerService.addComputer(computer);
 
@@ -85,7 +85,7 @@ public class ComputerController {
         model.addAttribute("computer", computer);
         model.addAttribute("equipments", equipments);
         model.addAttribute("edit", true);
-        return "registration";
+        return "registrationComputer";
     }
 
     /**
@@ -96,7 +96,7 @@ public class ComputerController {
     public String updateComputer(@Valid Computer computer, BindingResult result, ModelMap model) {
 
         if (result.hasErrors()) {
-            return "registration";
+            return "registrationComputer";
         }
 
         computerService.updateComputer(computer);

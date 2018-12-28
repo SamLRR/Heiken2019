@@ -7,9 +7,11 @@ import io.samlr.heiken.service.EquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,8 +63,34 @@ public class EquipmentController {
         } else {
 
         }
-        model.setViewName("registration");
+        model.setViewName("registrationComputer");
         model.addObject("equipments", equipments);
         return equipments;
     }
+
+    @RequestMapping(value = {"/edit-equipment-{id}"}, method = RequestMethod.GET, produces = "application/json;charset=utf-8")
+    public String editEquipment(@PathVariable String id, ModelMap model) {
+        Equipment equipment = equipmentService.getEquipmentById(Long.valueOf(id));
+        model.addAttribute("equipment", equipment);
+        model.addAttribute("edit", true);
+        return "registrationEquipment";
+    }
+
+    /**
+     * This method will be called on form submission, handling POST request for
+     * updating equipment in database. It also validates the equipment input
+     */
+    @RequestMapping(value = {"/edit-equipment-{id}"}, method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+    public String updateEquipment(@Valid Equipment equipment, BindingResult result, ModelMap model) {
+
+        if (result.hasErrors()) {
+            return "registrationEquipment";
+        }
+
+        equipmentService.updateEquipment(equipment);
+
+        model.addAttribute("success", "Equipment " + equipment.getDescription() + " updated successfully");
+        return "registrationSuccess";
+    }
+
 }

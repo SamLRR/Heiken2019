@@ -32,34 +32,10 @@
 <body>
 
  	<div class="generic-container">
-	<div class="well lead">Computer Registration Form</div>
- 	<form:form method="POST" modelAttribute="computer" class="form-horizontal">
+	<div class="well lead">Equipment Registration Form</div>
+ 	<form:form method="POST" modelAttribute="equipment" class="form-horizontal">
 		<form:input type="hidden" path="id" id="id"/>
 		
-		<div class="row">
-			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="armName">ARM name</label>
-				<div class="col-md-7">
-					<form:input type="text" path="armName" id="armName" class="form-control input-sm"/>
-					<div class="has-error">
-						<form:errors path="armName" class="help-inline"/>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="description">Description Name</label>
-				<div class="col-md-7">
-					<form:input type="text" path="description" id="description" class="form-control input-sm" />
-					<div class="has-error">
-						<form:errors path="description" class="help-inline"/>
-					</div>
-				</div>
-			</div>
-		</div>
-
 		<div class="row">
 			<div class="form-group col-md-12">
 				<label class="col-md-3 control-lable" for="id">ID</label>
@@ -81,11 +57,11 @@
 
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="nodeId">Node Id</label>
+				<label class="col-md-3 control-lable" for="armName">ARM name</label>
 				<div class="col-md-7">
-					<form:input type="password" path="nodeId" id="nodeId" class="form-control input-sm" />
+					<form:input type="text" path="computer.armName" id="armName" class="form-control input-sm"/>
 					<div class="has-error">
-						<form:errors path="nodeId" class="help-inline"/>
+						<form:errors path="computer" class="help-inline"/>
 					</div>
 				</div>
 			</div>
@@ -93,11 +69,11 @@
 
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="domainName">Domain name</label>
+				<label class="col-md-3 control-lable" for="type">Equipment type</label>
 				<div class="col-md-7">
-					<form:input type="text" path="domainName" id="domainName" class="form-control input-sm" />
+					<form:input type="text" path="type" id="type" class="form-control input-sm" />
 					<div class="has-error">
-						<form:errors path="domainName" class="help-inline"/>
+						<form:errors path="type" class="help-inline"/>
 					</div>
 				</div>
 			</div>
@@ -105,11 +81,11 @@
 
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="name">Name</label>
+				<label class="col-md-3 control-lable" for="model">Model</label>
 				<div class="col-md-7">
-					<form:input type="text" path="name" id="name" class="form-control input-sm" />
+					<form:input type="text" path="model" id="model" class="form-control input-sm" />
 					<div class="has-error">
-						<form:errors path="name" class="help-inline"/>
+						<form:errors path="model" class="help-inline"/>
 					</div>
 				</div>
 			</div>
@@ -117,28 +93,15 @@
 
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="phone">Phone</label>
+				<label class="col-md-3 control-lable" for="serialNumber">Serial number</label>
 				<div class="col-md-7">
-					<form:input type="text" path="phone" id="phone" class="form-control input-sm" />
+					<form:input type="text" path="serialNumber" id="serialNumber" class="form-control input-sm" />
 					<div class="has-error">
-						<form:errors path="phone" class="help-inline"/>
+						<form:errors path="serialNumber" class="help-inline"/>
 					</div>
 				</div>
 			</div>
 		</div>
-
-		<div class="row">
-			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="userDescription">User description</label>
-				<div class="col-md-7">
-					<form:input type="text" path="userDescription" id="userDescription" class="form-control input-sm" />
-					<div class="has-error">
-						<form:errors path="userDescription" class="help-inline"/>
-					</div>
-				</div>
-			</div>
-		</div>
-
 
 		<%--<div class="row">--%>
 			<%--<div class="form-group col-md-12">--%>
@@ -152,24 +115,6 @@
 			<%--</div>--%>
 		<%--</div>--%>
 
-
-        <table border="1">
-            <tr>
-                <th>ID</th>
-                <th>Тип</th>
-                <th>Модель</th>
-                <th>Серийный номер</th>
-                <th>Описание</th>
-            </tr>
-            <c:forEach items="${equipments}" var="e">
-            <tr>
-                <td><a href=<c:url value='/equipment/get/all_equipments/${e.id}'/>>${e.id}</a></td>
-                <td>${e.type}</td>
-                <td>${e.model}</td>
-                <td>${e.serialNumber}</td>
-                <td>${e.description}</td>
-            </tr>
-            </c:forEach>
 		<div class="row">
 			<div class="form-actions floatRight">
 				<c:choose>

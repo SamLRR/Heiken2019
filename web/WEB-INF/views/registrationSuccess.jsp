@@ -16,7 +16,7 @@
 	</div>
 	
 	<span class="well floatRight">
-		Go to <a href="<c:url value='/computer/all_computers' />">Users List</a>
+		Go to <a href="<c:url value='/computer/all_computers' />">Computers List</a>
 	</span>
 </div>
 </body>

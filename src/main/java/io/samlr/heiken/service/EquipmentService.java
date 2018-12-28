@@ -9,7 +9,7 @@ public interface EquipmentService {
 
     Equipment addEquipment(Equipment equipment);
 
-    Equipment getEquipmentById(Long ip);
+    Equipment getEquipmentById(Long id);
 
     List<Equipment> getAllEquipments();
 
