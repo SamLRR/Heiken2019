@@ -41,24 +41,18 @@
             <table border="1">
                 <tr>
                     <th>ID</th>
-                    <th>Код</th>
-                    <th>Название АРМа</th>
-                    <th>Описание АРМа(IP адрес, узел, предпр)</th>
-                    <th>Имя в домене</th>
-                    <th>Контактный Телефон</th>
-                    <th>Описание пользователя</th>
-                    <th>Диапазон IP</th>
+                    <th>Тип</th>
+                    <th>Модель</th>
+                    <th>Серийный номер</th>
+                    <th>Описание</th>
                 </tr>
-                <c:forEach items="${computer}" var="e">
+                <c:forEach items="${equipment}" var="e">
                     <tr>
-                        <td><a href=<c:url value='/edit-computer-${e.id}'/>>${e.id}</a></td>
-                        <td>${e.code}</td>
-                        <td>${e.name}</td>
+                        <td><a href=<c:url value='/equipment/edit-equipment-${e.id}'/>>${e.id}</a></td>
+                        <td>${e.type}</td>
+                        <td>${e.model}</td>
+                        <td>${e.serialNumber}</td>
                         <td>${e.description}</td>
-                        <td>${e.domainName}</td>
-                        <td>${e.phone}</td>
-                        <td>${e.userDescription}</td>
-                        <td>${e.diap_ip}</td>
                     </tr>
                 </c:forEach>
             </table>

@@ -6,6 +6,7 @@ import io.samlr.heiken.service.ComputerService;
 import io.samlr.heiken.service.EquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -50,6 +51,14 @@ public class EquipmentController {
     public Equipment updateEvent(@RequestBody Equipment equipment) {
         return equipmentService.updateEquipment(equipment);
     }
+
+    @RequestMapping("/all_equipments")
+    public String getAllComputers(Model model) {
+        model.addAttribute("equipment", equipmentService.getAllEquipments());
+
+        return "all_equipments";
+    }
+
 
     @RequestMapping(value = "/get/all_equipments/{computerId}", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     @ResponseBody
