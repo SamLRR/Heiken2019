@@ -83,7 +83,7 @@
 			<div class="form-group col-md-12">
 				<label class="col-md-3 control-lable" for="nodeId">Node Id</label>
 				<div class="col-md-7">
-					<form:input type="password" path="nodeId" id="nodeId" class="form-control input-sm" />
+					<form:input type="password" path="nodeId.id" id="nodeId" class="form-control input-sm" />
 					<div class="has-error">
 						<form:errors path="nodeId" class="help-inline"/>
 					</div>
