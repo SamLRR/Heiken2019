@@ -16,8 +16,7 @@ public class Computer {
     private String armName;
     private Long code;
 
-    @Nullable
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "node_id")
     private Node nodeId;
 
