@@ -1,6 +1,5 @@
 package io.samlr.heiken.controller;
 
-import io.samlr.heiken.entity.Computer;
 import io.samlr.heiken.entity.Equipment;
 import io.samlr.heiken.service.ComputerService;
 import io.samlr.heiken.service.EquipmentService;
@@ -10,10 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -28,11 +25,28 @@ public class EquipmentController {
         this.computerService = computerService;
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
-    @ResponseBody
-    public Equipment addEquipment(@RequestBody Equipment equipment) {
-        return equipmentService.addEquipment(equipment);
+    @RequestMapping(value = "/{id}/add", method = RequestMethod.GET)
+    public String newEquipment(ModelMap model) {
+        Equipment equipment = new Equipment();
+        model.addAttribute("equipment", equipment);
+        model.addAttribute("edit", false);
+        return "registrationEquipment";
     }
+
+    @RequestMapping(value = {"/{id}/add"}, method = RequestMethod.POST)
+    public String saveEquipment(@Valid Equipment equipment, BindingResult result,
+                                ModelMap model, @PathVariable String id) {
+        if (result.hasErrors()) {
+            return "registrationEquipment";
+        }
+
+        equipment.setComputer(computerService.getComputerById(Long.valueOf(id)));
+        equipmentService.addEquipment(equipment);
+
+        model.addAttribute("success", "Equipment " + equipment.getDescription() + " registered successfully");
+        return "registrationSuccess";
+    }
+
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     @ResponseBody
@@ -52,29 +66,11 @@ public class EquipmentController {
         return equipmentService.updateEquipment(equipment);
     }
 
-    @RequestMapping("/all_equipments")
+    @RequestMapping(value = "/all_equipments", method = RequestMethod.GET)
     public String getAllComputers(Model model) {
         model.addAttribute("equipment", equipmentService.getAllEquipments());
 
         return "all_equipments";
-    }
-
-
-    @RequestMapping(value = "/get/all_equipments/{computerId}", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
-    @ResponseBody
-    public List<Equipment> getAllEquipmentsOfComputer(@PathVariable String computerId, ModelAndView model){
-
-        List<Equipment> equipments = new ArrayList<>();
-        if(computerId!=null){
-            Computer computerById = computerService.getComputerById(Long.parseLong(computerId));
-            List<Equipment> allEquipmentsByComputerId = equipmentService.getAllEquipmentsByComputerId(computerById.getId());
-            equipments.addAll(allEquipmentsByComputerId);
-        } else {
-
-        }
-        model.setViewName("registrationComputer");
-        model.addObject("equipments", equipments);
-        return equipments;
     }
 
     @RequestMapping(value = {"/edit-equipment-{id}"}, method = RequestMethod.GET, produces = "application/json;charset=utf-8")
@@ -100,6 +96,19 @@ public class EquipmentController {
 
         model.addAttribute("success", "Equipment " + equipment.getDescription() + " updated successfully");
         return "registrationSuccess";
+    }
+
+    @RequestMapping(value = "filter", method =RequestMethod.POST)
+    public String filter(@RequestParam String filter, ModelMap model) {
+        List<Equipment> equipments;
+
+        if (filter != null && !filter.isEmpty()) {
+            equipments = equipmentService.getEquipmentsBySerial(filter);
+        } else {
+            equipments = equipmentService.getAllEquipments();
+        }
+        model.addAttribute("equipment", equipments);
+        return "all_equipments";
     }
 
 }

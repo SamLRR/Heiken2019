@@ -1,7 +1,5 @@
 package io.samlr.heiken.entity;
 
-import org.jetbrains.annotations.Nullable;
-
 import javax.persistence.*;
 
 @Entity

@@ -24,7 +24,7 @@ public class EquipmentDaoImpl extends BasicDaoImpl<Equipment> implements Equipme
         Root<Equipment> root = criteriaQuery.from(Equipment.class);
 
         criteriaQuery.select(root);
-        criteriaQuery.where(builder.equal(root.get("name"), name));
+        criteriaQuery.where(builder.equal(root.get("serialNumber"), name));
 
         Query<Equipment> typedQuery = session.createQuery(criteriaQuery);
         return typedQuery.getSingleResult();
@@ -56,6 +56,21 @@ public class EquipmentDaoImpl extends BasicDaoImpl<Equipment> implements Equipme
 
         criteriaQuery.select(root);
         criteriaQuery.where(builder.equal(root.get("computer"), id));
+
+        Query<Equipment> typedQuery = session.createQuery(criteriaQuery);
+        return typedQuery.getResultList();
+    }
+
+    @Override
+    public List<Equipment> getEquipmentsBySerial(String serial) {
+        Session session = sessionFactory.getCurrentSession();
+
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Equipment> criteriaQuery = builder.createQuery(Equipment.class);
+        Root<Equipment> root = criteriaQuery.from(Equipment.class);
+
+        criteriaQuery.select(root);
+        criteriaQuery.where(builder.like(root.get("serialNumber"), "%"+serial+"%"));
 
         Query<Equipment> typedQuery = session.createQuery(criteriaQuery);
         return typedQuery.getResultList();

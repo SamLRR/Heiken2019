@@ -5,6 +5,7 @@
 <html>
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
+    <title>All computers</title>
     <%--<script src="../" type="text/javascript"></script>--%>
 </head>
 <script>
@@ -41,7 +42,7 @@
             <table border="1">
                 <tr>
                     <th>ID</th>
-                    <th>Код</th>
+                    <%--<th>Код</th>--%>
                     <th>Название АРМа</th>
                     <th>Описание АРМа(IP адрес, узел, предпр)</th>
                     <th>Имя в домене</th>
@@ -52,7 +53,7 @@
                 <c:forEach items="${computer}" var="e">
                     <tr>
                         <td><a href=<c:url value='/computer/edit-computer-${e.id}'/>>${e.id}</a></td>
-                        <td>${e.code}</td>
+                        <%--<td>${e.code}</td>--%>
                         <td>${e.name}</td>
                         <td>${e.description}</td>
                         <td>${e.domainName}</td>

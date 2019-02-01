@@ -9,7 +9,7 @@ public class AppController {
     @RequestMapping("/")
     public String getHelloPage() {
 
-        return "helloPage";
+        return "all_computers";
     }
 
     @RequestMapping("/adminpage")

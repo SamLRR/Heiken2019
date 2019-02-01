@@ -43,4 +43,9 @@ public class EquipmentServiceImpl implements EquipmentService {
     public List<Equipment> getAllEquipmentsByComputerId(Long id) {
         return equipmentDao.getAllEquipmentsOfComputer(id);
     }
+
+    @Override
+    public List<Equipment> getEquipmentsBySerial(String serial) {
+        return equipmentDao.getEquipmentsBySerial(serial);
+    }
 }

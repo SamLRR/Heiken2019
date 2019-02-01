@@ -5,6 +5,7 @@
 <html>
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
+    <title>All equipments</title>
     <%--<script src="../" type="text/javascript"></script>--%>
 </head>
 <script>
@@ -31,12 +32,12 @@
     <div id="mainRow">
         <section id="main">
             <h1>Список всех устройств</h1>
-            <form method="post" action="filter">
-                <input type="text" name="ip">
-                <button type="submit">Найти по описанию</button>
+            <form method="post" action="/equipment/filter">
+                <input type="text" name="filter">
+                <button type="submit">Найти по сер. номеру</button>
             </form>
             <div class="well">
-                <a href="<c:url value='computer/add' />">Добавить новый компьютер</a>
+                <a href="<c:url value='computer/add' />">Добавить новое устройство</a>
             </div>
             <table border="1">
                 <tr>

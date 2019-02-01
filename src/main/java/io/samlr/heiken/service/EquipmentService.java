@@ -18,4 +18,6 @@ public interface EquipmentService {
     Equipment updateEquipment(Equipment equipment);
 
     List<Equipment> getAllEquipmentsByComputerId(Long id);
+
+    List<Equipment> getEquipmentsBySerial(String filter);
 }

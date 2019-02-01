@@ -63,16 +63,16 @@ public class ComputerController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String newComputer(ModelMap model){
+    public String newComputer(ModelMap model) {
         Computer computer = new Computer();
         model.addAttribute("computer", computer);
         model.addAttribute("edit", false);
         return "registrationComputer";
     }
 
-    @RequestMapping(value = { "/add" }, method = RequestMethod.POST)
-    public String saveUser(@Valid Computer computer, BindingResult result,
-                           ModelMap model) {
+    @RequestMapping(value = {"/add"}, method = RequestMethod.POST)
+    public String saveComputer(@Valid Computer computer, BindingResult result,
+                               ModelMap model) {
         if (result.hasErrors()) {
             return "registrationComputer";
         }

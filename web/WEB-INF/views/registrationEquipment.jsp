@@ -6,7 +6,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>User Registration Form</title>
+	<title>Equipment Registration Form</title>
 	<link href="<c:url value='/css/app.css' />" rel="stylesheet"/>
 	<link href="<c:url value='/css/bootstrap.css' />" rel="stylesheet"/>
 </head>
@@ -32,7 +32,7 @@
 <body>
 
  	<div class="generic-container">
-	<div class="well lead">Equipment Registration Form</div>
+	<div class="well lead">Форма регистрации оборудования</div>
  	<form:form method="POST" modelAttribute="equipment" class="form-horizontal">
 		<form:input type="hidden" path="id" id="id"/>
 		
