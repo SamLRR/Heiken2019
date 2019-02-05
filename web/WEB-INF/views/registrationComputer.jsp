@@ -9,6 +9,7 @@
     <title>Computer Registration Form</title>
     <link href="<c:url value='/css/app.css' />" rel="stylesheet"/>
     <link href="<c:url value='/css/bootstrap.css' />" rel="stylesheet"/>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <script>
@@ -30,7 +31,7 @@
 </script>
 
 <body>
-
+<%@ include file = "footer.jsp" %>
 <div class="generic-container">
     <div class="well lead">Форма регистрации АРМа</div>
     <form:form method="POST" modelAttribute="computer" class="form-horizontal">
@@ -200,7 +201,7 @@
         <%--</div>--%>
 
 
-    <table border="1">
+    <table border="1" style="font-family:Georgia, Garamond, Serif;color:black;font-style:italic;" >
         <tr>
             <th>ID</th>
             <th>Тип</th>
@@ -236,6 +237,7 @@
         </div>
         </form:form>
 </div>
+<%@ include file = "footer.jsp" %>
 </body>
 
 </html>

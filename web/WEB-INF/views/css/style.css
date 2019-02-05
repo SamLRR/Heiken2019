@@ -1,0 +1,55 @@
+body{
+    /*margin: 0;*/
+    background: url("/images/275.jpg") no-repeat;
+    background-size: cover;
+    font-family: 'Work Sans', sans-serif;
+    color: aliceblue;
+        /*font-weight: 300;*/
+}
+table {
+    color: aliceblue;
+}
+.container{
+    width:80%;
+    margin:0 auto;
+}
+
+header{
+    background:#55d6aa;
+}
+header::after{
+    content: ' ';
+    display: table;
+    clear: both;
+}
+.logo{
+    float: left;
+    margin: 0 -250px;
+
+}
+nav{
+    float: right;
+}
+
+nav ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li{
+    font-size: 150%;
+    display:inline-block;
+    margin: 0 25px;
+    padding-top:32px;
+}
+.footer{
+    font-size: large;
+    position: fixed;
+    left: 0;
+    bottom: 10px;
+    width: 100%;
+    color: black;
+    text-align: left;
+}
+

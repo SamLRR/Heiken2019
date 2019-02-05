@@ -6,6 +6,7 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
     <title>All computers</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
     <%--<script src="../" type="text/javascript"></script>--%>
 </head>
 <script>
@@ -27,6 +28,7 @@
 
 </script>
 <body>
+<%@ include file = "header.jsp" %>
 
 <div id="mainContainer">
     <div id="mainRow">
@@ -37,7 +39,7 @@
                 <button type="submit">Найти по описанию</button>
             </form>
             <div class="well">
-                <a href="<c:url value='/computer/add' />">Добавить новый компьютер</a>
+                <a href="<c:url value='/computer/add' />"><font color="#f0f8ff" size="5px">Добавить новый компьютер</font></a>
             </div>
             <table border="1">
                 <tr>
@@ -50,16 +52,16 @@
                     <th>Описание пользователя</th>
                     <th>Диапазон IP</th>
                 </tr>
-                <c:forEach items="${computer}" var="e">
+                <c:forEach items="${computer}" var="c">
                     <tr>
-                        <td><a href=<c:url value='/computer/edit-computer-${e.id}'/>>${e.id}</a></td>
+                        <td><a href=<c:url value='/computer/edit-computer-${c.id}'/>><font color="#f0f8ff">${c.id}</font></a></td>
                         <%--<td>${e.code}</td>--%>
-                        <td>${e.name}</td>
-                        <td>${e.description}</td>
-                        <td>${e.domainName}</td>
-                        <td>${e.phone}</td>
-                        <td>${e.userDescription}</td>
-                        <td>${e.diap_ip}</td>
+                        <td>${c.name}</td>
+                        <td>${c.description}</td>
+                        <td>${c.domainName}</td>
+                        <td>${c.phone}</td>
+                        <td>${c.userDescription}</td>
+                        <td>${c.diap_ip}</td>
                     </tr>
                 </c:forEach>
             </table>
@@ -75,17 +77,7 @@
 
 </div>
 
-
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <strong>RESPONSE</strong>
-    </div>
-    <div class="panel-body" id="response"></div>
-</div>
-
-<footer>
-    &copy; 2018, InfoTrance co.
-</footer>
+<%@ include file = "footer.jsp" %>
 
 </body>
 </html>

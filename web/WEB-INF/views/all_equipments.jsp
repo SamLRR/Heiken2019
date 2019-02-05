@@ -6,7 +6,7 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
     <title>All equipments</title>
-    <%--<script src="../" type="text/javascript"></script>--%>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <script>
     var service = "http://localhost:8080"
@@ -27,6 +27,7 @@
 
 </script>
 <body>
+<%@ include file = "header.jsp" %>
 
 <div id="mainContainer">
     <div id="mainRow">
@@ -39,7 +40,7 @@
             <div class="well">
                 <a href="<c:url value='computer/add' />">Добавить новое устройство</a>
             </div>
-            <table border="1">
+            <table id="equipments" border="1">
                 <tr>
                     <th>ID</th>
                     <th>Тип</th>
@@ -77,9 +78,7 @@
     <div class="panel-body" id="response"></div>
 </div>
 
-<footer>
-    &copy; 2018, InfoTrance co.
-</footer>
+<%@ include file = "footer.jsp" %>
 
 </body>
 </html>

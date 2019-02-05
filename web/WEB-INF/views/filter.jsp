@@ -5,9 +5,10 @@
 <html>
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
-    <%--<script src="../" type="text/javascript"></script>--%>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
 </head>
-
+<body>
+<%@ include file = "header.jsp" %>
 <div id="mainContainer">
     <div id="mainRow">
         <section id="main">
@@ -55,18 +56,6 @@
     </div>
 
 </div>
-
-
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <strong>RESPONSE</strong>
-    </div>
-    <div class="panel-body" id="response"></div>
-</div>
-
-<footer>
-    &copy; 2018, InfoTrance co.
-</footer>
-
+<%@ include file = "footer.jsp" %>
 </body>
 </html>

@@ -9,6 +9,7 @@
 	<title>Equipment Registration Form</title>
 	<link href="<c:url value='/css/app.css' />" rel="stylesheet"/>
 	<link href="<c:url value='/css/bootstrap.css' />" rel="stylesheet"/>
+	<link href="/css/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <script>
@@ -30,6 +31,7 @@
 </script>
 
 <body>
+<%@ include file = "header.jsp" %>
 
  	<div class="generic-container">
 	<div class="well lead">Форма регистрации оборудования</div>
@@ -131,16 +133,17 @@
 			<div class="form-actions floatRight">
 				<c:choose>
 					<c:when test="${edit}">
-						<input type="submit" value="Update" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/computer/all_computers' />">Cancel</a>
+						<input type="submit" value="Update" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/equipment/all_equipments' />">Cancel</a>
 					</c:when>
 					<c:otherwise>
-						<input type="submit" value="Register" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/computer/all_computers' />">Cancel</a>
+							<input type="submit" value="Register" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/equipment/all_equipments' />">Cancel</a>
 					</c:otherwise>
 				</c:choose>
 			</div>
 		</div>
 	</form:form>
 	</div>
+<%@ include file = "footer.jsp" %>
 </body>
 
 </html>
