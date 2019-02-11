@@ -207,6 +207,7 @@
             <th>Тип</th>
             <th>Модель</th>
             <th>Серийный номер</th>
+            <th>Штрих код</th>
             <th>Описание</th>
         </tr>
         <c:forEach items="${equipments}" var="e">
@@ -215,6 +216,7 @@
             <td>${e.type}</td>
             <td>${e.model}</td>
             <td>${e.serialNumber}</td>
+            <td>${e.barCode}</td>
             <td>${e.description}</td>
         </tr>
         </c:forEach>

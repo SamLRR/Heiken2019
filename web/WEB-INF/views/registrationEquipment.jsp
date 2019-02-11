@@ -105,6 +105,18 @@
 			</div>
 		</div>
 
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable" for="barCode">Штрих код</label>
+                <div class="col-md-7">
+                    <form:input type="text" path="barCode" id="barCode" class="form-control input-sm"/>
+                    <div class="has-error">
+                        <form:errors path="barCode" class="help-inline"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 		<div class="row">
 			<div class="form-group col-md-12">
 				<label class="col-md-3 control-lable" for="description">Description</label>

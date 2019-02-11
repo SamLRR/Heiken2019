@@ -13,4 +13,6 @@ public interface EquipmentDao extends BasicDao<Equipment> {
     List<Equipment> getAllEquipmentsOfComputer(Long id);
 
     List<Equipment> getEquipmentsBySerial(String serial);
+
+    List<Equipment> getEquipmentsByBarCode(String barCode);
 }

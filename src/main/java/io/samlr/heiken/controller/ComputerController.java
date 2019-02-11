@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -49,17 +50,49 @@ public class ComputerController {
         return "all_computers";
     }
 
-    @PostMapping("filter")
-    public String getComputerByIp(@RequestParam String ip, ModelMap model) {
+    @RequestMapping(value = "findByDescr", method = RequestMethod.POST)
+    public String filter1(@RequestParam String findByDescr, ModelMap model) {
         List<Computer> computers;
 
-        if (ip != null && !ip.isEmpty()) {
-            computers = computerService.getComputerByIp(ip);
+        if (findByDescr != null && !findByDescr.isEmpty()) {
+            computers = computerService.getComputerByIp(findByDescr);
         } else {
             computers = computerService.getAllComputers();
         }
-        model.addAttribute("computers", computers);
-        return "filter";
+        model.addAttribute("computer", computers);
+        return "all_computers";
+    }
+
+    @RequestMapping(value = "findBySerial", method = RequestMethod.POST)
+    public String filter2(@RequestParam String serial, ModelMap model) {
+        List<Equipment> equipments = equipmentService.getEquipmentsBySerial(serial);
+        List<Computer> computers = new ArrayList<>();
+
+        if (serial != null && !serial.isEmpty()) {
+            for (Equipment equipment : equipments) {
+                computers.add(equipment.getComputer());
+            }
+        } else {
+            computers = computerService.getAllComputers();
+        }
+        model.addAttribute("computer", computers);
+        return "all_computers";
+    }
+
+    @RequestMapping(value = "findByBarCode", method = RequestMethod.POST)
+    public String filter3(@RequestParam String barCode, ModelMap model) {
+        List<Equipment> equipments = equipmentService.getEquipmentsByBarCode(barCode);
+        List<Computer> computers = new ArrayList<>();
+
+        if (barCode != null && !barCode.isEmpty()) {
+            for (Equipment equipment : equipments) {
+                computers.add(equipment.getComputer());
+            }
+        } else {
+            computers = computerService.getAllComputers();
+        }
+        model.addAttribute("computer", computers);
+        return "all_computers";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)

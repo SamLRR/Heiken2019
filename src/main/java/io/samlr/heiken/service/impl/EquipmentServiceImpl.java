@@ -48,4 +48,9 @@ public class EquipmentServiceImpl implements EquipmentService {
     public List<Equipment> getEquipmentsBySerial(String serial) {
         return equipmentDao.getEquipmentsBySerial(serial);
     }
+
+    @Override
+    public List<Equipment> getEquipmentsByBarCode(String barCode) {
+        return equipmentDao.getEquipmentsByBarCode(barCode);
+    }
 }

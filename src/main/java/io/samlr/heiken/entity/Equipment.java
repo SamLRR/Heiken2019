@@ -17,6 +17,15 @@ public class Equipment {
     private String model;
     private String serialNumber;
     private String description;
+    private String barCode;
+
+    public String getBarCode() {
+        return barCode;
+    }
+
+    public void setBarCode(String barCode) {
+        this.barCode = barCode;
+    }
 
     public Long getId() {
         return id;

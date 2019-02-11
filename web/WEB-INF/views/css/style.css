@@ -53,3 +53,6 @@ nav li{
     text-align: left;
 }
 
+form {
+    display: inline-block;
+}

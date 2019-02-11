@@ -20,4 +20,6 @@ public interface EquipmentService {
     List<Equipment> getAllEquipmentsByComputerId(Long id);
 
     List<Equipment> getEquipmentsBySerial(String filter);
+
+    List<Equipment> getEquipmentsByBarCode(String barCode);
 }

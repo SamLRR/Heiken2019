@@ -34,9 +34,17 @@
     <div id="mainRow">
         <section id="main">
             <h1>Список всех компьютеров</h1>
-            <form method="post" action="/computer/filter">
-                <input type="text" name="ip">
+            <form method="post" action="/computer/findByDescr">
+                <input type="text" name="findByDescr">
                 <button type="submit">Найти по описанию</button>
+            </form>
+            <form method="post" action="/computer/findBySerial">
+                <input type="text" name="serial">
+                <button type="submit">Найти по серийному номеру</button>
+            </form>
+            <form method="post" action="/computer/findByBarCode">
+                <input type="text" name="barCode">
+                <button type="submit">Найти по ШК</button>
             </form>
             <div class="well">
                 <a href="<c:url value='/computer/add' />"><font color="#f0f8ff" size="5px">Добавить новый компьютер</font></a>
