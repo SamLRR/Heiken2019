@@ -98,12 +98,12 @@ public class EquipmentController {
         return "registrationSuccess";
     }
 
-    @RequestMapping(value = "filter", method =RequestMethod.POST)
-    public String filter(@RequestParam String filter, ModelMap model) {
+    @RequestMapping(value = "findBySerial", method =RequestMethod.POST)
+    public String filter1(@RequestParam String serial, ModelMap model) {
         List<Equipment> equipments;
 
-        if (filter != null && !filter.isEmpty()) {
-            equipments = equipmentService.getEquipmentsBySerial(filter);
+        if (serial != null && !serial.isEmpty()) {
+            equipments = equipmentService.getEquipmentsBySerial(serial);
         } else {
             equipments = equipmentService.getAllEquipments();
         }
@@ -111,4 +111,16 @@ public class EquipmentController {
         return "all_equipments";
     }
 
+    @RequestMapping(value = "findByBarCode", method =RequestMethod.POST)
+    public String filter2(@RequestParam String barCode, ModelMap model) {
+        List<Equipment> equipments;
+
+        if (barCode != null && !barCode.isEmpty()) {
+            equipments = equipmentService.getEquipmentsByBarCode(barCode);
+        } else {
+            equipments = equipmentService.getAllEquipments();
+        }
+        model.addAttribute("equipment", equipments);
+        return "all_equipments";
+    }
 }

@@ -33,9 +33,13 @@
     <div id="mainRow">
         <section id="main">
             <h1>Список всех устройств</h1>
-            <form method="post" action="/equipment/filter">
-                <input type="text" name="filter">
+            <form method="post" action="/equipment/findBySerial">
+                <input type="text" name="serial">
                 <button type="submit">Найти по сер. номеру</button>
+            </form>
+            <form method="post" action="/equipment/findByBarCode">
+                <input type="text" name="barCode">
+                <button type="submit">Найти по ШК</button>
             </form>
             <div class="well">
                 <a href="<c:url value='computer/add' />">Добавить новое устройство</a>
