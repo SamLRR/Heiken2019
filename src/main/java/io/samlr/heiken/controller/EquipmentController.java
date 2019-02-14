@@ -1,28 +1,52 @@
 package io.samlr.heiken.controller;
 
 import io.samlr.heiken.entity.Equipment;
+import io.samlr.heiken.service.ComputerService;
 import io.samlr.heiken.service.EquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
 @RequestMapping(value = "/equipment")
 public class EquipmentController {
     private final EquipmentService equipmentService;
+    private final ComputerService computerService;
 
     @Autowired
-    public EquipmentController(EquipmentService equipmentService) {
+    public EquipmentController(EquipmentService equipmentService, ComputerService computerService) {
         this.equipmentService = equipmentService;
+        this.computerService = computerService;
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
-    @ResponseBody
-    public Equipment addEquipment(@RequestBody Equipment equipment) {
-        return equipmentService.addEquipment(equipment);
+    @RequestMapping(value = "/{id}/add", method = RequestMethod.GET)
+    public String newEquipment(ModelMap model) {
+        Equipment equipment = new Equipment();
+        model.addAttribute("equipment", equipment);
+        model.addAttribute("edit", false);
+        return "registrationEquipment";
     }
+
+    @RequestMapping(value = {"/{id}/add"}, method = RequestMethod.POST)
+    public String saveEquipment(@Valid Equipment equipment, BindingResult result,
+                                ModelMap model, @PathVariable String id) {
+        if (result.hasErrors()) {
+            return "registrationEquipment";
+        }
+
+        equipment.setComputer(computerService.getComputerById(Long.valueOf(id)));
+        equipmentService.addEquipment(equipment);
+
+        model.addAttribute("success", "Equipment " + equipment.getDescription() + " registered successfully");
+        return "registrationSuccess";
+    }
+
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     @ResponseBody
@@ -40,5 +64,63 @@ public class EquipmentController {
     @ResponseBody
     public Equipment updateEvent(@RequestBody Equipment equipment) {
         return equipmentService.updateEquipment(equipment);
+    }
+
+    @RequestMapping(value = "/all_equipments", method = RequestMethod.GET)
+    public String getAllComputers(Model model) {
+        model.addAttribute("equipment", equipmentService.getAllEquipments());
+
+        return "all_equipments";
+    }
+
+    @RequestMapping(value = {"/edit-equipment-{id}"}, method = RequestMethod.GET, produces = "application/json;charset=utf-8")
+    public String editEquipment(@PathVariable String id, ModelMap model) {
+        Equipment equipment = equipmentService.getEquipmentById(Long.valueOf(id));
+        model.addAttribute("equipment", equipment);
+        model.addAttribute("edit", true);
+        return "registrationEquipment";
+    }
+
+    /**
+     * This method will be called on form submission, handling POST request for
+     * updating equipment in database. It also validates the equipment input
+     */
+    @RequestMapping(value = {"/edit-equipment-{id}"}, method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+    public String updateEquipment(@Valid Equipment equipment, BindingResult result, ModelMap model) {
+
+        if (result.hasErrors()) {
+            return "registrationEquipment";
+        }
+
+        equipmentService.updateEquipment(equipment);
+
+        model.addAttribute("success", "Equipment " + equipment.getDescription() + " updated successfully");
+        return "registrationSuccess";
+    }
+
+    @RequestMapping(value = "findBySerial", method =RequestMethod.POST)
+    public String filter1(@RequestParam String serial, ModelMap model) {
+        List<Equipment> equipments;
+
+        if (serial != null && !serial.isEmpty()) {
+            equipments = equipmentService.getEquipmentsBySerial(serial);
+        } else {
+            equipments = equipmentService.getAllEquipments();
+        }
+        model.addAttribute("equipment", equipments);
+        return "all_equipments";
+    }
+
+    @RequestMapping(value = "findByBarCode", method =RequestMethod.POST)
+    public String filter2(@RequestParam String barCode, ModelMap model) {
+        List<Equipment> equipments;
+
+        if (barCode != null && !barCode.isEmpty()) {
+            equipments = equipmentService.getEquipmentsByBarCode(barCode);
+        } else {
+            equipments = equipmentService.getAllEquipments();
+        }
+        model.addAttribute("equipment", equipments);
+        return "all_equipments";
     }
 }

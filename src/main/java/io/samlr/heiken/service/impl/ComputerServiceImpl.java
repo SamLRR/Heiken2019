@@ -4,13 +4,15 @@ import io.samlr.heiken.dao.ComputerDao;
 import io.samlr.heiken.entity.Computer;
 import io.samlr.heiken.service.ComputerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ComputerServiceImpl implements ComputerService {
 
     @Autowired
-    ComputerDao computerDao;
+    private ComputerDao computerDao;
 
     @Override
     public Computer addComputer(Computer computer) {

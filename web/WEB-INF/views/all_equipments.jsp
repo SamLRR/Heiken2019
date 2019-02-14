@@ -5,7 +5,8 @@
 <html>
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
-    <%--<script src="../" type="text/javascript"></script>--%>
+    <title>All equipments</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <script>
     var service = "http://localhost:8080"
@@ -26,39 +27,40 @@
 
 </script>
 <body>
+<%@ include file = "header.jsp" %>
 
 <div id="mainContainer">
     <div id="mainRow">
         <section id="main">
             <h1>Список всех устройств</h1>
-            <form method="post" action="filter">
-                <input type="text" name="ip">
-                <button type="submit">Найти по описанию</button>
+            <form method="post" action="/equipment/findBySerial">
+                <input type="text" name="serial">
+                <button type="submit">Найти по сер. номеру</button>
+            </form>
+            <form method="post" action="/equipment/findByBarCode">
+                <input type="text" name="barCode">
+                <button type="submit">Найти по ШК</button>
             </form>
             <div class="well">
-                <a href="<c:url value='computer/add' />">Добавить новый компьютер</a>
+                <a href="<c:url value='computer/add' />">Добавить новое устройство</a>
             </div>
-            <table border="1">
+            <table id="equipments" border="1">
                 <tr>
                     <th>ID</th>
-                    <th>Код</th>
-                    <th>Название АРМа</th>
-                    <th>Описание АРМа(IP адрес, узел, предпр)</th>
-                    <th>Имя в домене</th>
-                    <th>Контактный Телефон</th>
-                    <th>Описание пользователя</th>
-                    <th>Диапазон IP</th>
+                    <th>Тип</th>
+                    <th>Модель</th>
+                    <th>Серийный номер</th>
+                    <th>Штрих код</th>
+                    <th>Описание</th>
                 </tr>
-                <c:forEach items="${computer}" var="c">
+                <c:forEach items="${equipment}" var="e">
                     <tr>
-                        <td><a href=<c:url value='/edit-computer-${c.id}'/>>${c.id}</a></td>
-                        <td>${c.code}</td>
-                        <td>${c.name}</td>
-                        <td>${c.description}</td>
-                        <td>${c.domainName}</td>
-                        <td>${c.phone}</td>
-                        <td>${c.userDescription}</td>
-                        <td>${c.diap_ip}</td>
+                        <td><a href=<c:url value='/equipment/edit-equipment-${e.id}'/>>${e.id}</a></td>
+                        <td>${e.type}</td>
+                        <td>${e.model}</td>
+                        <td>${e.serialNumber}</td>
+                        <td>${e.barCode}</td>
+                        <td>${e.description}</td>
                     </tr>
                 </c:forEach>
             </table>
@@ -82,9 +84,7 @@
     <div class="panel-body" id="response"></div>
 </div>
 
-<footer>
-    &copy; 2018, InfoTrance co.
-</footer>
+<%@ include file = "footer.jsp" %>
 
 </body>
 </html>

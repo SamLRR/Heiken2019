@@ -14,8 +14,9 @@ public class Computer {
     private String armName;
     private Long code;
 
-    @Column(name = "node_id")
-    private Long nodeId;
+    @ManyToOne
+    @JoinColumn(name = "node_id")
+    private Node nodeId;
 
     @Column(name = "department_id")
     private Long departmentId;
@@ -50,11 +51,11 @@ public class Computer {
         this.armName = armName;
     }
 
-    public Long getNodeId() {
+    public Node getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(Long nodeId) {
+    public void setNodeId(Node nodeId) {
         this.nodeId = nodeId;
     }
 
