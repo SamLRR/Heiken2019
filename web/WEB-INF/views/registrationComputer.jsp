@@ -7,6 +7,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Computer Registration Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
     <link href="<c:url value='/css/app.css' />" rel="stylesheet"/>
     <link href="<c:url value='/css/bootstrap.css' />" rel="stylesheet"/>
     <link href="/css/style.css" rel="stylesheet" type="text/css">
@@ -14,28 +15,31 @@
 
 <script>
     var service = 'http://localhost:8080/equipment';
-    var GetAll = function (id) {
+    var RemoveToStorage = function (id) {
         $.ajax({
-            type: 'GET',
-            url: service + '/get/all_equipments/' + id,
+            type: 'POST',
+            url: service + '/remove_to_storage/' + id,
             dataType: 'json',
             async: false,
             success: function (result) {
-                $('#response').html(JSON.stringify(result))
+                $('#response').html(JSON.stringify(result));
+
+                alert("Equipment was removed.");
             },
             error: function (jqXHR, testStatus, errorThrown) {
                 $('#response').html(JSON.stringify(jqXHR))
             }
         });
     };
+
 </script>
 
 <body>
-<%@ include file = "footer.jsp" %>
+<%@ include file="header.jsp" %>
 <div class="generic-container">
     <div class="well lead">Форма регистрации АРМа</div>
     <form:form method="POST" modelAttribute="computer" class="form-horizontal">
-    <form:input type="hidden" path="id" id="id"/>
+    <%--<form:input type="hidden" path="id" id="id"/>--%>
 
     <div class="row">
         <div class="form-group col-md-12">
@@ -154,7 +158,7 @@
 
     <div class="row">
         <div class="form-group col-md-12">
-            <%--<label class="col-md-3 control-lable" for="code">Code</label>--%>
+                <%--<label class="col-md-3 control-lable" for="code">Code</label>--%>
             <div class="col-md-7">
                 <form:input type="hidden" path="code" id="code" class="form-control input-sm"/>
                 <div class="has-error">
@@ -201,7 +205,7 @@
         <%--</div>--%>
 
 
-    <table border="1" style="font-family:Georgia, Garamond, Serif;color:black;font-style:italic;" >
+    <table border="1" style="font-family:Georgia, Garamond, Serif;color:black;font-style:italic;">
         <tr>
             <th>ID</th>
             <th>Тип</th>
@@ -209,6 +213,7 @@
             <th>Серийный номер</th>
             <th>Штрих код</th>
             <th>Описание</th>
+            <th>Перем на склад</th>
         </tr>
         <c:forEach items="${equipments}" var="e">
         <tr>
@@ -218,10 +223,13 @@
             <td>${e.serialNumber}</td>
             <td>${e.barCode}</td>
             <td>${e.description}</td>
+            <td>
+                    <a href="<c:url value='/equipment/remove_to_storage/${e.id}'/>"><font size="3"/>Перемещение</a>
+            </td>
         </tr>
         </c:forEach>
 
-        <a href="<c:url value='/equipment/${computer.id}/add'/>"><font size="3">Добавить новое оборудование</a>
+        <a href="<c:url value='/equipment/${computer.id}/add'/>"><font size="3"/>Добавить новое оборудование</a>
 
         <div class="row">
             <div class="form-actions floatRight">
@@ -239,7 +247,7 @@
         </div>
         </form:form>
 </div>
-<%@ include file = "footer.jsp" %>
+<%@ include file="footer.jsp" %>
 </body>
 
 </html>

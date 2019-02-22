@@ -111,7 +111,7 @@ public class ComputerController {
         }
         computerService.addComputer(computer);
 
-        model.addAttribute("success", "Computer " + computer.getArmName() + " registered successfully");
+        model.addAttribute("success", "Компьютер " + computer.getArmName() + " успешно зарегистрирован!");
         return "registrationSuccess";
     }
 
@@ -140,7 +140,7 @@ public class ComputerController {
 
         computerService.updateComputer(computer);
 
-        model.addAttribute("success", "Computer " + computer.getArmName() + " updated successfully");
+        model.addAttribute("success", "Компьютер " + computer.getArmName() + " успешно обновлён!");
         return "registrationSuccess";
     }
 

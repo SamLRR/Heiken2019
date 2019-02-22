@@ -37,7 +37,7 @@
 	<div class="well lead">Форма регистрации оборудования</div>
  	<form:form method="POST" modelAttribute="equipment" class="form-horizontal">
 		<form:input type="hidden" path="id" id="id"/>
-		
+
 		<div class="row">
 			<div class="form-group col-md-12">
 				<label class="col-md-3 control-lable" for="id">ID</label>
@@ -59,7 +59,7 @@
 
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="armName">ARM name</label>
+				<label class="col-md-3 control-lable" for="armName">Наименование АРМа</label>
 				<div class="col-md-7">
 					<form:input type="text" path="computer.armName" id="armName" class="form-control input-sm"/>
 					<div class="has-error">
@@ -71,7 +71,7 @@
 
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="type">Equipment type</label>
+				<label class="col-md-3 control-lable" for="type">Тип устройства</label>
 				<div class="col-md-7">
 					<form:input type="text" path="type" id="type" class="form-control input-sm" />
 					<div class="has-error">
@@ -83,7 +83,7 @@
 
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="model">Model</label>
+				<label class="col-md-3 control-lable" for="model">Модель</label>
 				<div class="col-md-7">
 					<form:input type="text" path="model" id="model" class="form-control input-sm" />
 					<div class="has-error">
@@ -95,7 +95,7 @@
 
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="serialNumber">Serial number</label>
+				<label class="col-md-3 control-lable" for="serialNumber">Серийный номер</label>
 				<div class="col-md-7">
 					<form:input type="text" path="serialNumber" id="serialNumber" class="form-control input-sm" />
 					<div class="has-error">
@@ -119,7 +119,7 @@
 
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="description">Description</label>
+				<label class="col-md-3 control-lable" for="description">Описание</label>
 				<div class="col-md-7">
 					<form:input type="text" path="description" id="description" class="form-control input-sm"/>
 					<div class="has-error">
@@ -145,10 +145,10 @@
 			<div class="form-actions floatRight">
 				<c:choose>
 					<c:when test="${edit}">
-						<input type="submit" value="Update" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/equipment/all_equipments' />">Cancel</a>
+						<input type="submit" value="Обновить" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/equipment/all_equipments' />">Отмена</a>
 					</c:when>
 					<c:otherwise>
-							<input type="submit" value="Register" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/equipment/all_equipments' />">Cancel</a>
+							<input type="submit" value="Создать" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/equipment/all_equipments' />">Отмена</a>
 					</c:otherwise>
 				</c:choose>
 			</div>

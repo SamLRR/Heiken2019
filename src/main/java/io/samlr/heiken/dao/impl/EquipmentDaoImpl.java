@@ -55,7 +55,7 @@ public class EquipmentDaoImpl extends BasicDaoImpl<Equipment> implements Equipme
         Root<Equipment> root = criteriaQuery.from(Equipment.class);
 
         criteriaQuery.select(root);
-        criteriaQuery.where(builder.equal(root.get("computer"), id));
+        criteriaQuery.where(builder.equal(root.get("computer"), id),builder.equal(root.get("ws_component"), true));
 
         Query<Equipment> typedQuery = session.createQuery(criteriaQuery);
         return typedQuery.getResultList();
