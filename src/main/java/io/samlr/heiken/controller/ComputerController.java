@@ -104,8 +104,7 @@ public class ComputerController {
     }
 
     @RequestMapping(value = {"/add"}, method = RequestMethod.POST)
-    public String saveComputer(@Valid Computer computer, BindingResult result,
-                               ModelMap model) {
+    public String saveComputer(@Valid Computer computer, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "registrationComputer";
         }

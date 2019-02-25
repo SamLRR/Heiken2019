@@ -1,7 +1,6 @@
 package io.samlr.heiken.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.Null;
 
 @Entity
 @Table(name = "equipments")

@@ -6,6 +6,7 @@ import io.samlr.heiken.service.EquipmentService;
 import io.samlr.heiken.service.NodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -75,6 +76,12 @@ public class NodeController {
 
         model.addAttribute("success", "node " + node.getDescription() + " updated successfully");
         return "registrationSuccess";
+    }
+
+    @RequestMapping(value = "all_nodes",method = RequestMethod.GET)
+    public String getAllNodes(ModelMap model){
+        model.addAttribute("node", nodeService.getAllNodes());
+        return "all_nodes";
     }
 
 }

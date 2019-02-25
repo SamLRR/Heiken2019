@@ -36,7 +36,7 @@
  	<div class="generic-container">
 	<div class="well lead">Форма регистрации оборудования</div>
  	<form:form method="POST" modelAttribute="equipment" class="form-horizontal">
-		<form:input type="hidden" path="id" id="id"/>
+		<%--<form:input type="hidden" path="id" id="id"/>--%>
 
 		<div class="row">
 			<div class="form-group col-md-12">

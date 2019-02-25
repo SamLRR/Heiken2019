@@ -42,7 +42,7 @@
                 <button type="submit">Найти по ШК</button>
             </form>
             <div class="well">
-                <a href="<c:url value='computer/add' />">Добавить новое устройство</a>
+                <a href="<c:url value='equipment/add'/>"><font color="#f0f8ff" size="5px">Добавить новое устройство</font></a>
             </div>
             <table id="equipments" border="1">
                 <tr>
@@ -55,7 +55,7 @@
                 </tr>
                 <c:forEach items="${equipment}" var="e">
                     <tr>
-                        <td><a href=<c:url value='/equipment/edit-equipment-${e.id}'/>>${e.id}</a></td>
+                        <td><a href=<c:url value='/equipment/edit-equipment-${e.id}'/>><font color="#f0f8ff">${e.id}</font></a></td>
                         <td>${e.type}</td>
                         <td>${e.model}</td>
                         <td>${e.serialNumber}</td>

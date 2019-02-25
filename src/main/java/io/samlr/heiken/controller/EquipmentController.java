@@ -26,8 +26,27 @@ public class EquipmentController {
         this.computerService = computerService;
     }
 
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String newEquipment(ModelMap model){
+        Equipment equipment = new Equipment();
+        model.addAttribute("equipment", equipment);
+        model.addAttribute("edit", false);
+        return "registrationEquipment";
+    }
+
+    @RequestMapping(value = {"/add"}, method = RequestMethod.POST)
+    public String saveEquipment(@Valid Equipment equipment, BindingResult result, ModelMap model){
+        if (result.hasErrors()) {
+            return "registrationEquipment";
+        }
+        equipmentService.addEquipment(equipment);
+
+        model.addAttribute("success", "Оборудование " + equipment.getDescription() + " успешно зарегистрировано!");
+        return "registrationSuccess";
+    }
+
     @RequestMapping(value = "/{id}/add", method = RequestMethod.GET)
-    public String newEquipment(ModelMap model) {
+    public String newEquipmentForRealComputer(ModelMap model) {
         Equipment equipment = new Equipment();
         model.addAttribute("equipment", equipment);
         model.addAttribute("edit", false);
@@ -35,7 +54,7 @@ public class EquipmentController {
     }
 
     @RequestMapping(value = {"/{id}/add"}, method = RequestMethod.POST)
-    public String saveEquipment(@Valid Equipment equipment, BindingResult result,
+    public String saveEquipmentForRealComputer(@Valid Equipment equipment, BindingResult result,
                                 ModelMap model, @PathVariable String id) {
         if (result.hasErrors()) {
             return "registrationEquipment";
