@@ -5,10 +5,10 @@
         <nav>
             <ul>
                 <li><a href="/">Главная</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="/computer/all_computers"> List fo Computers</a></li>
-                <li><a href="/equipment/all_equipments"> List of Equipments</a></li>
-                <li><a href="#"> Contact</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="/computer/all_computers">Список компьютеров</a></li>
+                <li><a href="/equipment/all_equipments">Список оборудования</a></li>
+                <li><a href="#">Контакты</a></li>
             </ul>
         </nav>
     </div>

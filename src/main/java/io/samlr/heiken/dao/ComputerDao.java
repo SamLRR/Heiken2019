@@ -8,5 +8,5 @@ public interface ComputerDao extends BasicDao<Computer>{
 
     Computer getComputerByName(String name);
 
-    List<Computer> getComputerByIp(String ip);
+    List<Computer> getComputerByDescription(String ip);
 }

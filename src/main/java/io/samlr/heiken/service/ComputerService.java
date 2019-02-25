@@ -16,5 +16,5 @@ public interface ComputerService {
 
     Computer updateComputer(Computer computer);
 
-    List<Computer> getComputerByIp(String ip);
+    List<Computer> getComputerByDescription(String ip);
 }

@@ -55,7 +55,7 @@ public class ComputerController {
         List<Computer> computers;
 
         if (findByDescr != null && !findByDescr.isEmpty()) {
-            computers = computerService.getComputerByIp(findByDescr);
+            computers = computerService.getComputerByDescription(findByDescr);
         } else {
             computers = computerService.getAllComputers();
         }
