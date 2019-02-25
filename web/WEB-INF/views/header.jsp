@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="utf-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
 <header>
     <div class="container">
         <img src="/images/logo.png" alt="logo" class="logo">
         <nav>
             <ul>
-                <li><a href="/">Главная страница</a></li>
-                <li><a href="#">О нас</a></li>
-                <li><a href="/computer/all_computers"> Список АРМов</a></li>
-                <li><a href="/equipment/all_equipments"> Список оборудования</a></li>
-                <li><a href="#"> Контакты</a></li>
+                <li><a href="/">Главная</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="/computer/all_computers"> List fo Computers</a></li>
+                <li><a href="/equipment/all_equipments"> List of Equipments</a></li>
+                <li><a href="#"> Contact</a></li>
             </ul>
         </nav>
     </div>
