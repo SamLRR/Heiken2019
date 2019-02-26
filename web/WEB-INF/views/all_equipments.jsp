@@ -42,7 +42,7 @@
                 <button type="submit">Найти по ШК</button>
             </form>
             <div class="well">
-                <a href="<c:url value='equipment/add'/>"><font color="#f0f8ff" size="5px">Добавить новое устройство</font></a>
+                <a href="<c:url value='/equipment/0/add'/>"><font color="#f0f8ff" size="5px">Добавить новое устройство</font></a>
             </div>
             <table id="equipments" border="1">
                 <tr>
@@ -74,14 +74,6 @@
         </section>
     </div>
 
-</div>
-
-
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <strong>RESPONSE</strong>
-    </div>
-    <div class="panel-body" id="response"></div>
 </div>
 
 <%@ include file = "footer.jsp" %>

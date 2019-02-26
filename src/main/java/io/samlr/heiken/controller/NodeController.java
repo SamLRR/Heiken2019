@@ -53,7 +53,7 @@ public class NodeController {
     }
 
 
-    @RequestMapping(value = {"/edit-Node-{id}"}, method = RequestMethod.GET, produces = "application/json;charset=utf-8")
+    @RequestMapping(value = {"/edit-node-{id}"}, method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     public String editNode(@PathVariable String id, ModelMap model) {
         Node node = nodeService.getNodeById(Long.valueOf(id));
         model.addAttribute("node", node);
@@ -74,7 +74,7 @@ public class NodeController {
 
         nodeService.updateNode(node);
 
-        model.addAttribute("success", "node " + node.getDescription() + " updated successfully");
+        model.addAttribute("success", "Узел СПД " + node.getName() + " успешно обновлен.");
         return "registrationSuccess";
     }
 

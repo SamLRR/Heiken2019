@@ -53,4 +53,9 @@ public class EquipmentServiceImpl implements EquipmentService {
     public List<Equipment> getEquipmentsByBarCode(String barCode) {
         return equipmentDao.getEquipmentsByBarCode(barCode);
     }
+
+    @Override
+    public List<Equipment> getAllEquipmentsFree() {
+        return equipmentDao.getAllEquipmentsFree();
+    }
 }

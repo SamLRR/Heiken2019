@@ -7,7 +7,13 @@
                 <li><a href="/">Главная</a></li>
                 <li><a href="#">О нас</a></li>
                 <li><a href="/computer/all_computers">Список компьютеров</a></li>
-                <li><a href="/equipment/all_equipments">Список оборудования</a></li>
+                <div class="dropdown">
+                <li><a href="#">Список оборудования</a></li>
+                <div class="dropdown-content">
+                    <a href="/equipment/all_equipments">Все устройства</a>
+                    <a href="/equipment/all_equipments_free">Устройства без АРМа</a>
+                </div>
+                </div>
                 <li><a href="/node/all_nodes">Список узлов СПД</a></li>
                 <li><a href="#">Контакты</a></li>
             </ul>

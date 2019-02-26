@@ -97,6 +97,13 @@ public class EquipmentController {
         return "all_equipments";
     }
 
+    @RequestMapping(value = "/all_equipments_free", method = RequestMethod.GET)
+    public String getAllComputersFree(Model model) {
+        model.addAttribute("equipment", equipmentService.getAllEquipmentsFree());
+
+        return "all_equipments";
+    }
+
     @RequestMapping(value = {"/edit-equipment-{id}"}, method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     public String editEquipment(@PathVariable String id, ModelMap model) {
         Equipment equipment = equipmentService.getEquipmentById(Long.valueOf(id));
