@@ -40,6 +40,7 @@ public class BasicDaoImpl<T> implements BasicDao<T> {
         Root<T> root = criteriaQuery.from(entityClass);
 
         criteriaQuery.select(root);
+        criteriaQuery.orderBy(builder.asc(root.get("id")));
 
         return getSessionFactory().createQuery(criteriaQuery).list();
     }

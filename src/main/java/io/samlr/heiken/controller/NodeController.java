@@ -6,6 +6,7 @@ import io.samlr.heiken.service.EquipmentService;
 import io.samlr.heiken.service.NodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -52,7 +53,7 @@ public class NodeController {
     }
 
 
-    @RequestMapping(value = {"/edit-Node-{id}"}, method = RequestMethod.GET, produces = "application/json;charset=utf-8")
+    @RequestMapping(value = {"/edit-node-{id}"}, method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     public String editNode(@PathVariable String id, ModelMap model) {
         Node node = nodeService.getNodeById(Long.valueOf(id));
         model.addAttribute("node", node);
@@ -73,8 +74,14 @@ public class NodeController {
 
         nodeService.updateNode(node);
 
-        model.addAttribute("success", "node " + node.getDescription() + " updated successfully");
+        model.addAttribute("success", "Узел СПД " + node.getName() + " успешно обновлен.");
         return "registrationSuccess";
+    }
+
+    @RequestMapping(value = "all_nodes",method = RequestMethod.GET)
+    public String getAllNodes(ModelMap model){
+        model.addAttribute("node", nodeService.getAllNodes());
+        return "all_nodes";
     }
 
 }

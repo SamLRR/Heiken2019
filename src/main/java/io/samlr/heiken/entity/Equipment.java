@@ -9,7 +9,7 @@ public class Equipment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "comp_id", updatable = false)
     private Computer computer;
 
@@ -18,6 +18,16 @@ public class Equipment {
     private String serialNumber;
     private String description;
     private String barCode;
+    @Column(insertable = false)
+    private boolean ws_component;
+
+    public boolean isWs_component() {
+        return ws_component;
+    }
+
+    public void setWs_component(boolean ws_component) {
+        this.ws_component = ws_component;
+    }
 
     public String getBarCode() {
         return barCode;

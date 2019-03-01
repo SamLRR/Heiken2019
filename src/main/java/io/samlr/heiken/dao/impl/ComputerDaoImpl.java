@@ -32,7 +32,7 @@ public class ComputerDaoImpl extends BasicDaoImpl<Computer> implements ComputerD
 
 
     @Override
-    public List<Computer> getComputerByIp(String ip) {
+    public List<Computer> getComputerByDescription(String text) {
         Session session = sessionFactory.getCurrentSession();
 
         CriteriaBuilder builder = session.getCriteriaBuilder();
@@ -40,7 +40,11 @@ public class ComputerDaoImpl extends BasicDaoImpl<Computer> implements ComputerD
         Root<Computer> root = criteriaQuery.from(Computer.class);
 
         criteriaQuery.select(root);
-        criteriaQuery.where(builder.like(root.get("description"), "%"+ip+"%"));
+        criteriaQuery.where(builder.or(
+                builder.like(builder.lower(root.get("description")),"%"+text.toLowerCase()+"%"),
+                builder.like(builder.lower(root.get("userDescription")), "%"+text.toLowerCase()+"%"),
+                builder.like(builder.lower(root.get("name")), "%"+text.toLowerCase()+"%"),
+                builder.like(root.get("phone"), "%"+text+"%")));
 
         Query<Computer> typedQuery = session.createQuery(criteriaQuery);
         return typedQuery.getResultList();

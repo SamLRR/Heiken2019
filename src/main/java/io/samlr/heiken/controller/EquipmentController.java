@@ -1,5 +1,6 @@
 package io.samlr.heiken.controller;
 
+import io.samlr.heiken.entity.Computer;
 import io.samlr.heiken.entity.Equipment;
 import io.samlr.heiken.service.ComputerService;
 import io.samlr.heiken.service.EquipmentService;
@@ -25,8 +26,27 @@ public class EquipmentController {
         this.computerService = computerService;
     }
 
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String newEquipment(ModelMap model){
+        Equipment equipment = new Equipment();
+        model.addAttribute("equipment", equipment);
+        model.addAttribute("edit", false);
+        return "registrationEquipment";
+    }
+
+    @RequestMapping(value = {"/add"}, method = RequestMethod.POST)
+    public String saveEquipment(@Valid Equipment equipment, BindingResult result, ModelMap model){
+        if (result.hasErrors()) {
+            return "registrationEquipment";
+        }
+        equipmentService.addEquipment(equipment);
+
+        model.addAttribute("success", "Оборудование " + equipment.getDescription() + " успешно зарегистрировано!");
+        return "registrationSuccess";
+    }
+
     @RequestMapping(value = "/{id}/add", method = RequestMethod.GET)
-    public String newEquipment(ModelMap model) {
+    public String newEquipmentForRealComputer(ModelMap model) {
         Equipment equipment = new Equipment();
         model.addAttribute("equipment", equipment);
         model.addAttribute("edit", false);
@@ -34,16 +54,20 @@ public class EquipmentController {
     }
 
     @RequestMapping(value = {"/{id}/add"}, method = RequestMethod.POST)
-    public String saveEquipment(@Valid Equipment equipment, BindingResult result,
+    public String saveEquipmentForRealComputer(@Valid Equipment equipment, BindingResult result,
                                 ModelMap model, @PathVariable String id) {
         if (result.hasErrors()) {
             return "registrationEquipment";
         }
 
-        equipment.setComputer(computerService.getComputerById(Long.valueOf(id)));
+        Computer computer = computerService.getComputerById(Long.valueOf(id));
+        equipment.setComputer(computer);
+        equipment.setDescription(computer.getArmName());
+        equipment.setWs_component(true);
         equipmentService.addEquipment(equipment);
+        equipmentService.updateEquipment(equipment);
 
-        model.addAttribute("success", "Equipment " + equipment.getDescription() + " registered successfully");
+        model.addAttribute("success", "Устройство для " + equipment.getDescription() + " успешно зарегистрировано.");
         return "registrationSuccess";
     }
 
@@ -73,6 +97,13 @@ public class EquipmentController {
         return "all_equipments";
     }
 
+    @RequestMapping(value = "/all_equipments_free", method = RequestMethod.GET)
+    public String getAllComputersFree(Model model) {
+        model.addAttribute("equipment", equipmentService.getAllEquipmentsFree());
+
+        return "all_equipments";
+    }
+
     @RequestMapping(value = {"/edit-equipment-{id}"}, method = RequestMethod.GET, produces = "application/json;charset=utf-8")
     public String editEquipment(@PathVariable String id, ModelMap model) {
         Equipment equipment = equipmentService.getEquipmentById(Long.valueOf(id));
@@ -91,14 +122,14 @@ public class EquipmentController {
         if (result.hasErrors()) {
             return "registrationEquipment";
         }
-
+        equipment.setWs_component(true);
         equipmentService.updateEquipment(equipment);
 
-        model.addAttribute("success", "Equipment " + equipment.getDescription() + " updated successfully");
+        model.addAttribute("success", "Устройство " + equipment.getDescription() + " успешно обновлено.");
         return "registrationSuccess";
     }
 
-    @RequestMapping(value = "findBySerial", method =RequestMethod.POST)
+    @RequestMapping(value = "findBySerial", method = RequestMethod.POST)
     public String filter1(@RequestParam String serial, ModelMap model) {
         List<Equipment> equipments;
 
@@ -111,7 +142,7 @@ public class EquipmentController {
         return "all_equipments";
     }
 
-    @RequestMapping(value = "findByBarCode", method =RequestMethod.POST)
+    @RequestMapping(value = "findByBarCode", method = RequestMethod.POST)
     public String filter2(@RequestParam String barCode, ModelMap model) {
         List<Equipment> equipments;
 
@@ -122,5 +153,17 @@ public class EquipmentController {
         }
         model.addAttribute("equipment", equipments);
         return "all_equipments";
+    }
+
+    @RequestMapping(value = "/remove_to_storage/{id}", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
+    public String removeToStorage(@PathVariable String id/*, BindingResult result*/, ModelMap model) {
+//        if (result.hasErrors()) {
+//            return "registrationEquipment";
+//        }
+        Equipment equipment = equipmentService.getEquipmentById(Long.valueOf(id));
+        equipment.setWs_component(false);
+        equipmentService.updateEquipment(equipment);
+        model.addAttribute("success", "Устройство " + equipment.getModel() + " успешно перемещено на склад.");
+        return "registrationSuccess";
     }
 }

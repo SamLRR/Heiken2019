@@ -55,7 +55,7 @@ public class ComputerController {
         List<Computer> computers;
 
         if (findByDescr != null && !findByDescr.isEmpty()) {
-            computers = computerService.getComputerByIp(findByDescr);
+            computers = computerService.getComputerByDescription(findByDescr);
         } else {
             computers = computerService.getAllComputers();
         }
@@ -104,14 +104,13 @@ public class ComputerController {
     }
 
     @RequestMapping(value = {"/add"}, method = RequestMethod.POST)
-    public String saveComputer(@Valid Computer computer, BindingResult result,
-                               ModelMap model) {
+    public String saveComputer(@Valid Computer computer, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "registrationComputer";
         }
         computerService.addComputer(computer);
 
-        model.addAttribute("success", "Computer " + computer.getArmName() + " registered successfully");
+        model.addAttribute("success", "Компьютер " + computer.getArmName() + " успешно зарегистрирован!");
         return "registrationSuccess";
     }
 
@@ -140,7 +139,7 @@ public class ComputerController {
 
         computerService.updateComputer(computer);
 
-        model.addAttribute("success", "Computer " + computer.getArmName() + " updated successfully");
+        model.addAttribute("success", "Компьютер " + computer.getArmName() + " успешно обновлён!");
         return "registrationSuccess";
     }
 

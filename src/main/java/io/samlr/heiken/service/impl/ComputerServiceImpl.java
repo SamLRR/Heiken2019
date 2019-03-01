@@ -40,7 +40,7 @@ public class ComputerServiceImpl implements ComputerService {
     }
 
     @Override
-    public List<Computer> getComputerByIp(String ip) {
-        return computerDao.getComputerByIp(ip);
+    public List<Computer> getComputerByDescription(String text) {
+        return computerDao.getComputerByDescription(text);
     }
 }

@@ -22,4 +22,6 @@ public interface EquipmentService {
     List<Equipment> getEquipmentsBySerial(String filter);
 
     List<Equipment> getEquipmentsByBarCode(String barCode);
+
+    List<Equipment> getAllEquipmentsFree();
 }
