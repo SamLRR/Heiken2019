@@ -47,7 +47,7 @@
 							<form:input type="text" path="id" id="id" class="form-control input-sm" disabled="true"/>
 						</c:when>
 						<c:otherwise>
-							<form:input type="text" path="id" id="id" class="form-control input-sm" />
+							<form:input type="text" path="id" id="id" class="form-control input-sm"  disabled="true"/>
 							<div class="has-error">
 								<form:errors path="id" class="help-inline"/>
 							</div>
@@ -59,7 +59,7 @@
 
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="armName">Наименование АРМа</label>
+				<label class="col-md-3 control-lable" for="armName">Наименование АРМа(не заполнять)</label>
 				<div class="col-md-7">
 					<form:input type="text" path="computer.armName" id="armName" class="form-control input-sm"/>
 					<div class="has-error">
@@ -119,11 +119,23 @@
 
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="description">Описание</label>
+				<label class="col-md-3 control-lable" for="description">Описание(не заполнять)</label>
 				<div class="col-md-7">
-					<form:input type="text" path="description" id="description" class="form-control input-sm"/>
+					<form:input type="text" path="description" id="description" class="form-control input-sm" />
 					<div class="has-error">
 						<form:errors path="description" class="help-inline"/>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-lable" for="dateOfCreate">Дата создания</label>
+				<div class="col-md-7">
+					<form:input type="" path="dateOfCreate" id="dateOfCreate" class="form-control input-sm"  disabled="true"/>
+					<div class="has-error">
+						<form:errors path="dateOfCreate" class="help-inline"/>
 					</div>
 				</div>
 			</div>

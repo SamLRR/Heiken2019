@@ -1,6 +1,7 @@
 package io.samlr.heiken.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "equipments")
@@ -20,6 +21,16 @@ public class Equipment {
     private String barCode;
     @Column(insertable = false)
     private boolean ws_component;
+    @Temporal(TemporalType.DATE)
+    private Date dateOfCreate;
+
+    public Date getDateOfCreate() {
+        return dateOfCreate;
+    }
+
+    public void setDateOfCreate(Date dateOfCreate) {
+        this.dateOfCreate = dateOfCreate;
+    }
 
     public boolean isWs_component() {
         return ws_component;

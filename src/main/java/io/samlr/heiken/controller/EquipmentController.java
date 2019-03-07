@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -62,8 +63,9 @@ public class EquipmentController {
 
         Computer computer = computerService.getComputerById(Long.valueOf(id));
         equipment.setComputer(computer);
-        equipment.setDescription(computer.getArmName());
+        equipment.setDescription(computer.getDescription());
         equipment.setWs_component(true);
+        equipment.setDateOfCreate(new Date());
         equipmentService.addEquipment(equipment);
         equipmentService.updateEquipment(equipment);
 
