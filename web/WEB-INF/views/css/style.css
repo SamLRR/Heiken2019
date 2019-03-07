@@ -45,18 +45,18 @@ nav ul {
 nav li {
     font-size: 150%;
     display: inline-block;
-    margin: 0 25px;
+    margin: 0 15px;
     padding-top: 32px;
 }
 
 .footer {
     font-size: large;
     position: fixed;
-    left: 0;
+    left: 0 ;
     bottom: 10px;
     width: 100%;
     color: black;
-    text-align: left;
+    text-align: right;
 }
 
 form {

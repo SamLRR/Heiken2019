@@ -5,7 +5,7 @@
 <html>
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
-    <title>All equipments</title>
+    <title>Узлы СПД</title>
     <link href="/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>

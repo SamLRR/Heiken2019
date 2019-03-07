@@ -5,7 +5,7 @@
 <html>
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
-    <title>All equipments</title>
+    <title>Устройства</title>
     <link href="/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <script>
@@ -35,7 +35,7 @@
             <h1>Список всех устройств</h1>
             <form method="post" action="/equipment/findBySerial">
                 <input type="text" name="serial">
-                <button type="submit">Найти по сер. номеру</button>
+                <button type="submit">Найти по сер. ном., типу, модели, описанию</button>
             </form>
             <form method="post" action="/equipment/findByBarCode">
                 <input type="text" name="barCode">

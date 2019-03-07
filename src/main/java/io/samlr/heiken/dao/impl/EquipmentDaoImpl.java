@@ -70,7 +70,12 @@ public class EquipmentDaoImpl extends BasicDaoImpl<Equipment> implements Equipme
         Root<Equipment> root = criteriaQuery.from(Equipment.class);
 
         criteriaQuery.select(root);
-        criteriaQuery.where(builder.like(root.get("serialNumber"), "%"+serial+"%"));
+
+        criteriaQuery.where(builder.or(
+                builder.like(builder.lower(root.get("type")),"%"+serial.toLowerCase()+"%"),
+                builder.like(builder.lower(root.get("model")), "%"+serial.toLowerCase()+"%"),
+                builder.like(builder.lower(root.get("serialNumber")), "%"+serial.toLowerCase()+"%"),
+                builder.like(builder.lower(root.get("description")), "%"+serial.toLowerCase()+"%")));
 
         Query<Equipment> typedQuery = session.createQuery(criteriaQuery);
         return typedQuery.getResultList();

@@ -41,7 +41,9 @@ public class ComputerDaoImpl extends BasicDaoImpl<Computer> implements ComputerD
 
         criteriaQuery.select(root);
         criteriaQuery.where(builder.or(
+                builder.like(builder.lower(root.get("armName")), "%"+text.toLowerCase()+"%"),
                 builder.like(builder.lower(root.get("description")),"%"+text.toLowerCase()+"%"),
+                builder.like(builder.lower(root.get("domainName")),"%"+text.toLowerCase()+"%"),
                 builder.like(builder.lower(root.get("userDescription")), "%"+text.toLowerCase()+"%"),
                 builder.like(builder.lower(root.get("name")), "%"+text.toLowerCase()+"%"),
                 builder.like(root.get("phone"), "%"+text+"%")));
