@@ -32,10 +32,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .passwordParameter("j_password").loginProcessingUrl("/j_spring_security_check")
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/create").access("hasRole('ADMIN')")
-                    .antMatchers("/").permitAll()
-                    .antMatchers("/admin/**").access("hasRole('ADMIN')")
-                .and().csrf().disable().formLogin().defaultSuccessUrl("/", false);
+                    .antMatchers("/", "/registration").permitAll()
+                    .anyRequest().authenticated()
+                .and()
+                    .formLogin()
+                    .loginPage("/login")
+                    .permitAll()
+                .and()
+                    .csrf().disable().formLogin().defaultSuccessUrl("/", false);
     }
 
     @Override

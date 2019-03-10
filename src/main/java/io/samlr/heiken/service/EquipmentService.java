@@ -1,6 +1,5 @@
 package io.samlr.heiken.service;
 
-import io.samlr.heiken.entity.Computer;
 import io.samlr.heiken.entity.Equipment;
 
 import java.util.List;

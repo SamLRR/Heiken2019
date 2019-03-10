@@ -3,12 +3,15 @@ package io.samlr.heiken.config;
 import io.samlr.heiken.dao.ComputerDao;
 import io.samlr.heiken.dao.EquipmentDao;
 import io.samlr.heiken.dao.NodeDao;
+import io.samlr.heiken.dao.UserDao;
 import io.samlr.heiken.dao.impl.ComputerDaoImpl;
 import io.samlr.heiken.dao.impl.EquipmentDaoImpl;
 import io.samlr.heiken.dao.impl.NodeDaoImpl;
+import io.samlr.heiken.dao.impl.UserDaoImpl;
 import io.samlr.heiken.entity.Computer;
 import io.samlr.heiken.entity.Equipment;
 import io.samlr.heiken.entity.Node;
+import io.samlr.heiken.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -68,4 +71,8 @@ public class AppConfig {
         return new NodeDaoImpl(Node.class);
     }
 
+    @Bean
+    public UserDao userDao(){
+        return new UserDaoImpl(User.class);
+    }
 }
