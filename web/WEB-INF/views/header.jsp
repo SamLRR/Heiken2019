@@ -16,6 +16,7 @@
                 </div>
                 <li><a href="/node/all_nodes">Список узлов СПД</a></li>
                 <li><a href="#">Контакты</a></li>
+                <li><a href="/logout">Выйти</a></li>
             </ul>
         </nav>
     </div>

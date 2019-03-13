@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .passwordParameter("j_password").loginProcessingUrl("/j_spring_security_check")
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/", "/registration").permitAll()
+                    .antMatchers("/", "/registration", "/css/**","/images/**").permitAll()
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()

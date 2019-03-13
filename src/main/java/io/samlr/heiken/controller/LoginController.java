@@ -20,8 +20,10 @@ import java.util.Collections;
 public class LoginController {
     private final UserService userService;
 
+
     public LoginController(UserService userService) {
         this.userService = userService;
+
     }
 
 
@@ -43,8 +45,8 @@ public class LoginController {
         user.setRoles(Collections.singleton(Role.ROLE_USER));
         userService.addUser(user);
 
-        model.addAttribute("success", "Пользователь: " + user.getFirstName()+" " +user.getLastName() + " успешно зарегистрирован!");
-        return "redirect:login";
+        model.addAttribute("success", "Пользователь: " + user.getFirstName() + " " + user.getLastName() + " успешно зарегистрирован!");
+        return "registrationSuccess";
     }
 
     @RequestMapping(value = {"/login"})

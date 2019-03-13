@@ -19,25 +19,6 @@
     <div class="well lead">Форма регистрации пользователя</div>
     <form:form method="POST" modelAttribute="user" class="form-horizontal">
 
-    <%--<div class="row">--%>
-        <%--<div class="form-group col-md-12">--%>
-            <%--<label class="col-md-3 control-lable" for="id">ID</label>--%>
-            <%--<div class="col-md-7">--%>
-                <%--<c:choose>--%>
-                    <%--<c:when test="${edit}">--%>
-                        <%--<form:input type="hidden" path="id" id="id" class="form-control input-sm" disabled="true"/>--%>
-                    <%--</c:when>--%>
-                    <%--<c:otherwise>--%>
-                        <%--<form:input type="hidden" path="id" id="id" class="form-control input-sm"/>--%>
-                        <%--<div class="has-error">--%>
-                            <%--<form:errors path="id" class="help-inline"/>--%>
-                        <%--</div>--%>
-                    <%--</c:otherwise>--%>
-                <%--</c:choose>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-
     <div class="row">
         <div class="form-group col-md-12">
             <label class="col-md-3 control-lable" for="login">Логин</label>
@@ -93,18 +74,6 @@
                 <form:input type="text" path="email" id="email" class="form-control input-sm"/>
                 <div class="has-error">
                     <form:errors path="email" class="help-inline"/>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="form-group col-md-12">
-            <label class="col-md-3 control-lable" for="active">Активный</label>
-            <div class="col-md-7">
-                <form:input type="text" path="active" id="active" class="form-control input-sm"/>
-                <div class="has-error">
-                    <form:errors path="active" class="help-inline"/>
                 </div>
             </div>
         </div>
