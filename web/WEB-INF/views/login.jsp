@@ -15,7 +15,7 @@
 <div id="wrapper">
     <div id="login" class="animate form">
         <form action="j_spring_security_check" method="post" autocomplete="on">
-            <h3>Sign in to FreeFly</h3>
+            <h3>Sign in to Heiken</h3>
             <p>
                 <label for="username" class="uname" data-icon="u"><span>Your login</span></label>
                 <input id="username" name="j_username" required="required" type="text" placeholder="login"/>
